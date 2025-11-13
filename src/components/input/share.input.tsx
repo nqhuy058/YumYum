@@ -17,13 +17,17 @@ const styles = StyleSheet.create({
         position: "relative",
     },
     input: {
-        borderWidth: 0,
+        borderWidth: 2,
+        borderColor: APP_COLOR.YELLOW_LIGHT,
         paddingHorizontal: 15,
         paddingVertical: Platform.OS === "android" ? 12 : 15,
         borderRadius: 12,
         backgroundColor: APP_COLOR.YELLOW_LIGHT,
         fontSize: 14,
         color: "#333",
+    },
+    inputFocused: {
+        borderColor: APP_COLOR.ORANGE,
     },
     eye: {
         position: 'absolute',
@@ -77,7 +81,10 @@ const ShareInput = (props: IProps) => {
                     keyboardType={keyboardType}
                     placeholder={placeholder}
                     placeholderTextColor="#999"
-                    style={styles.input}
+                    style={[
+                        styles.input,
+                        isFocused && styles.inputFocused
+                    ]}
                     secureTextEntry={secureTextEntry && !isShowPassword}
                 />
                 {secureTextEntry &&
@@ -85,7 +92,7 @@ const ShareInput = (props: IProps) => {
                         style={styles.eye}
                         name={isShowPassword ? "eye" : "eye-slash"}
                         size={18}
-                        color="#FF6B35"
+                        color={APP_COLOR.ORANGE}
                         onPress={() => setIsShowPassword(!isShowPassword)}
                     />
                 }

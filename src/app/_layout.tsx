@@ -61,6 +61,16 @@ const RootLayout = () => {
                 name="(auth)/verify"
                 options={{ headerShown: false }}
               />
+
+              <Stack.Screen
+                name="(auth)/request.password"
+                options={{ headerShown: false }}
+              />
+
+              <Stack.Screen
+                name="(auth)/forgot.password"
+                options={{ headerShown: false }}
+              />
             </Stack>
           </ThemeProvider>
           {/* </SafeAreaView> */}

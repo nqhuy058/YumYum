@@ -67,10 +67,9 @@ const styles = StyleSheet.create({
 const SignUpPage = () => {
     const handleSignUp = async (name: string, email: string, password: string) => {
         try {
-            // Sửa thứ tự tham số: (email, password, name)
             const res = await registerAPI(email, password, name)
             if (res.data) {
-                Toast.show("Đăng kí thành công!", {
+                Toast.show("Xác thực tài khoản", {
                     duration: Toast.durations.LONG,
                     textColor: "white",
                     backgroundColor: APP_COLOR.ORANGE,
@@ -147,7 +146,7 @@ const SignUpPage = () => {
                                     {/* Name Input */}
                                     <ShareInput
                                         title="Tên người dùng"
-                                        placeholder="Nhập tên"
+                                        placeholder="Nhập tên người dùng"
                                         onChangeText={handleChange('name')}
                                         onBlur={handleBlur('name')}
                                         value={values.name}
@@ -169,7 +168,7 @@ const SignUpPage = () => {
 
                                     {/* Password Input */}
                                     <ShareInput
-                                        title="Password"
+                                        title="Mật khẩu"
                                         placeholder="••••••••••"
                                         secureTextEntry={true}
                                         onChangeText={handleChange('password')}

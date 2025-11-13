@@ -99,23 +99,23 @@ const WelcomePage = () => {
                 </View>
 
                 {/* Title */}
-                <Text style={styles.title}>YUMQUICK</Text>
+                <Text style={styles.title}>YUMYUM</Text>
 
                 {/* Description */}
                 <Text style={styles.description}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                   Chào mừng bạn đến với YumYum! Khám phá hàng ngàn món ngon từ các nhà hàng yêu thích.
                 </Text>
 
                 {/* Buttons */}
                 <View style={styles.buttonContainer}>
                     <ShareButton
-                        tittle="Log In"
+                        tittle="Đăng nhập"
                         onPress={handleLogIn}
                         btnStyle={styles.loginBtn}
                         textStyle={styles.loginText}
                     />
                     <ShareButton
-                        tittle="Sign Up"
+                        tittle="Đăng kí"
                         onPress={handleSignUp}
                         btnStyle={styles.signupBtn}
                         textStyle={styles.signupText}

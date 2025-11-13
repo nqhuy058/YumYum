@@ -5,7 +5,6 @@ import { useCurrentApp } from "@/context/app.context"
 import { loginAPI } from "@/utils/api"
 import { APP_COLOR } from "@/utils/constant"
 import { LoginSchema } from "@/utils/validate.schema"
-import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Link, router } from "expo-router"
 import { Formik } from "formik"
 import { useState } from "react"
@@ -80,8 +79,15 @@ const LoginPage = () => {
             if (res.data) {
                 // await AsyncStorage.setItem("access_token", res.data.access_token);
                 // setAppState(res.data);
-                // router.replace("/(tabs)");
-                alert("me")
+                Toast.show("Đăng nhập thành công!", {
+                    duration: Toast.durations.LONG,
+                    textColor: "white",
+                    backgroundColor: APP_COLOR.ORANGE,
+                    opacity: 1
+                });
+
+                router.replace("/(tabs)");
+
             } else {
                 const m = Array.isArray(res.message)
                     ? res.message[0] : res.message;
@@ -93,12 +99,18 @@ const LoginPage = () => {
                     opacity: 1
                 });
 
-                // if (res.statusCode === 400) {
-                //     router.replace({
-                //         pathname: "/(auth)/verify",
-                //         params: { email: email, isLogin: 1 }
-                //     })
-                // }
+                if (res.statusCode === 400) {
+                    Toast.show("Xác thực tài khoản", {
+                        duration: Toast.durations.LONG,
+                        textColor: "white",
+                        backgroundColor: APP_COLOR.ORANGE,
+                        opacity: 1
+                    });
+                    router.replace({
+                        pathname: "/(auth)/verify",
+                        params: { email: email, isLogin: 1 }
+                    })
+                }
             }
         } catch (error) {
             console.log(">>> check error: ", error)
@@ -147,7 +159,7 @@ const LoginPage = () => {
 
                                     {/* Password Input */}
                                     <ShareInput
-                                        title="Password"
+                                        title="Mật khẩu"
                                         placeholder="••••••••••"
                                         secureTextEntry={true}
                                         onChangeText={handleChange('password')}
@@ -159,7 +171,9 @@ const LoginPage = () => {
 
                                     {/* Forgot Password */}
                                     <View style={styles.forgotContainer}>
-                                        <Text style={styles.forgotText}>
+                                        <Text
+                                            onPress={() => router.navigate("/(auth)/request.password")}
+                                            style={styles.forgotText}>
                                             Quên mật khẩu ?
                                         </Text>
                                     </View>
