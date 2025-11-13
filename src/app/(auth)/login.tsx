@@ -1,13 +1,15 @@
 import ShareButton from "@/components/button/share.button"
 import SocialButton from "@/components/button/social.button"
 import ShareInput from "@/components/input/share.input"
+import { useCurrentApp } from "@/context/app.context"
+import { loginAPI } from "@/utils/api"
 import { APP_COLOR } from "@/utils/constant"
 import { LoginSchema } from "@/utils/validate.schema"
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5"
-import { Link } from "expo-router"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { Link, router } from "expo-router"
 import { Formik } from "formik"
 import { useState } from "react"
-import { StyleSheet, Text, View, Keyboard, TouchableWithoutFeedback, ScrollView } from "react-native"
+import { Keyboard, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native"
 import Toast from "react-native-root-toast"
 import { SafeAreaView } from "react-native-safe-area-context"
 
@@ -67,31 +69,39 @@ const styles = StyleSheet.create({
 
 const LoginPage = () => {
     const [loading, setLoading] = useState<boolean>(false);
+    const { setAppState } = useCurrentApp();
 
     const handleLogin = async (email: string, password: string) => {
+
         try {
             setLoading(true)
-            // TODO: Gọi API đăng nhập ở đây
-            // const res = await loginAPI(email, password);
-
-            Toast.show("Đăng nhập thành công!", {
-                duration: Toast.durations.LONG,
-                textColor: "white",
-                backgroundColor: APP_COLOR.ORANGE,
-                opacity: 1
-            });
-
+            const res = await loginAPI(email, password);
             setLoading(false)
-            // router.replace("/(tabs)");
+            if (res.data) {
+                // await AsyncStorage.setItem("access_token", res.data.access_token);
+                // setAppState(res.data);
+                // router.replace("/(tabs)");
+                alert("me")
+            } else {
+                const m = Array.isArray(res.message)
+                    ? res.message[0] : res.message;
+
+                Toast.show(m, {
+                    duration: Toast.durations.LONG,
+                    textColor: "white",
+                    backgroundColor: APP_COLOR.ORANGE,
+                    opacity: 1
+                });
+
+                // if (res.statusCode === 400) {
+                //     router.replace({
+                //         pathname: "/(auth)/verify",
+                //         params: { email: email, isLogin: 1 }
+                //     })
+                // }
+            }
         } catch (error) {
-            setLoading(false)
             console.log(">>> check error: ", error)
-            Toast.show("Đăng nhập thất bại!", {
-                duration: Toast.durations.LONG,
-                textColor: "white",
-                backgroundColor: "#FF0000",
-                opacity: 1
-            });
         }
     }
 
@@ -104,7 +114,7 @@ const LoginPage = () => {
                         <Text style={styles.title}>Đăng nhập</Text>
                     </View>
 
-                    <ScrollView 
+                    <ScrollView
                         showsVerticalScrollIndicator={false}
                         style={{
                             backgroundColor: "white",
