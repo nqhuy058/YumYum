@@ -87,7 +87,7 @@ const LoginPage = () => {
                     opacity: 1
                 });
 
-                router.replace("/(tabs)");
+                router.replace("/(drawer)/(tabs)");
 
             } else {
                 const m = Array.isArray(res.message)

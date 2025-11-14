@@ -32,7 +32,7 @@ const RootPage = () => {
                         user: res.data.user,
                         access_token: await AsyncStorage.getItem("access_token")
                     })
-                    router.replace("/(tabs)")
+                    router.replace("/(drawer)/(tabs)")
                 } else {
                     router.replace("/(auth)/welcome")
                 }

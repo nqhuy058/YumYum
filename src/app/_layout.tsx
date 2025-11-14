@@ -68,7 +68,7 @@ const RootLayout = () => {
               />
 
               <Stack.Screen
-                name="(tabs)"
+                name="(drawer)"
                 options={{ headerShown: false }}
               />
 

@@ -166,7 +166,7 @@ const VerifyPage = () => {
                     params: { email: email }
                 });
             } else {
-                router.replace("/(tabs)");
+                router.replace("/(drawer)/(tabs)");
             }
         } else {
             Toast.show(res.message as string, {
