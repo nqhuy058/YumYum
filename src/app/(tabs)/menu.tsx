@@ -1,10 +1,10 @@
 import { View, Text } from "react-native"
 
-const AccountPage = () => {
+const MenuPage = () => {
     return (
         <View>
-            <Text>Account Page</Text>
+            <Text>Menu Page</Text>
         </View>
     )
 }
-export default AccountPage;
+export default  MenuPage;

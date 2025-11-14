@@ -5,6 +5,7 @@ import { useCurrentApp } from "@/context/app.context"
 import { loginAPI } from "@/utils/api"
 import { APP_COLOR } from "@/utils/constant"
 import { LoginSchema } from "@/utils/validate.schema"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Link, router } from "expo-router"
 import { Formik } from "formik"
 import { useState } from "react"
@@ -77,8 +78,8 @@ const LoginPage = () => {
             const res = await loginAPI(email, password);
             setLoading(false)
             if (res.data) {
-                // await AsyncStorage.setItem("access_token", res.data.access_token);
-                // setAppState(res.data);
+                await AsyncStorage.setItem("access_token", res.data.access_token);
+                setAppState(res.data);
                 Toast.show("Đăng nhập thành công!", {
                     duration: Toast.durations.LONG,
                     textColor: "white",
