@@ -1,17 +1,16 @@
-import {
-    View,
-    StyleSheet,
-    ScrollView,
-    Text,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { APP_COLOR } from "@/utils/constant";
-import SearchBar from "@/components/search/searchbar";
-import Header from "@/components/search/header";
-import MenuHome from "@/components/home/menu.home";
 import BannerHome from "@/components/home/banner.home";
 import CollectionHome from "@/components/home/collection.home";
-import bannerImage from "@/assets/banner/banner2.png";
+import MenuHome from "@/components/home/menu.home";
+import Header from "@/components/search/header";
+import SearchBar from "@/components/search/searchbar";
+import { APP_COLOR } from "@/utils/constant";
+import {
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -48,6 +47,12 @@ const styles = StyleSheet.create({
         color: APP_COLOR.ORANGE,
         fontWeight: "600",
     },
+
+    divider: {
+        height: 8,
+        backgroundColor: "#f0f0f0",
+        marginVertical: 15,
+    },
 });
 
 const collectionData = [
@@ -77,7 +82,7 @@ const HomePage = () => {
             {/* Header with Icons */}
             <View style={styles.header}>
                 <Header cartCount={2} />
-                 <SearchBar />
+                <SearchBar />
 
             </View>
 
@@ -87,7 +92,7 @@ const HomePage = () => {
                 style={styles.contentContainer}
             >
                 {/* Search Bar */}
-               
+
                 {/* Greeting Section */}
                 <View style={styles.greeting}>
                     <Text style={styles.greetingTitle}>Xin chào bạn</Text>
@@ -96,12 +101,17 @@ const HomePage = () => {
                     </Text>
                 </View>
 
+                 <View style={styles.divider} />
+
+
                 {/* Menu Categories */}
                 <MenuHome
                     onSelectMenu={(menu) => {
                         console.log("Selected menu:", menu);
                     }}
                 />
+
+                <View style={styles.divider} />
 
                 {/* Banner */}
                 <BannerHome

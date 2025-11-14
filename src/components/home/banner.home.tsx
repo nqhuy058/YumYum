@@ -124,7 +124,7 @@ const BannerHome = (props: IProps) => {
                 });
                 return nextIndex;
             });
-        }, 4000);
+        }, 2000);
     };
 
     const handleMomentumScrollEnd = (event: any) => {
