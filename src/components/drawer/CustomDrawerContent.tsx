@@ -79,13 +79,13 @@ const styles = StyleSheet.create({
 });
 
 const menuItems = [
-    { label: 'My Orders', icon: require('@/assets/drawer/order.png'), route: '/(drawer)/(tabs)/order' },
-    { label: 'My Profile', icon: require('@/assets/drawer/profile.png'), route: '/(drawer)/profile' },
-    { label: 'Delivery Address', icon: require('@/assets/drawer/adress.png'), route: '/(drawer)/address' },
-    { label: 'Payment Methods', icon: require('@/assets/drawer/payment.png'), route: '/(drawer)/payment' },
-    { label: 'Contact Us', icon: require('@/assets/drawer/contact.png'), route: '/(drawer)/contact' },
-    { label: 'Help & FAQs', icon: require('@/assets/drawer/help.png'), route: '/(drawer)/(tabs)/help' },
-    { label: 'Settings', icon: require('@/assets/drawer/setting.png'), route: '/(drawer)/setting' },
+    { label: 'Đơn hàng của bạn', icon: require('@/assets/drawer/order.png'), route: '/(drawer)/(tabs)/order' },
+    { label: 'Trang cá nhân', icon: require('@/assets/drawer/profile.png'), route: '/(drawer)/profile' },
+    { label: 'Đại chỉ giao hàng', icon: require('@/assets/drawer/adress.png'), route: '/(drawer)/address' },
+    { label: 'Ví thanh toán', icon: require('@/assets/drawer/payment.png'), route: '/(drawer)/payment' },
+    { label: 'Liên hệ', icon: require('@/assets/drawer/contact.png'), route: '/(drawer)/contact' },
+    { label: 'Hỗ trợ và tư vấn', icon: require('@/assets/drawer/help.png'), route: '/(drawer)/(tabs)/help' },
+    { label: 'Cài đặt', icon: require('@/assets/drawer/setting.png'), route: '/(drawer)/setting' },
 ];
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử dụng type DrawerContentComponentProps
@@ -96,8 +96,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử d�
         : process.env.EXPO_PUBLIC_IOS_API_URL;
 
     const baseImage = `${backend}/images/avatar`;
-    // const navigation = useNavigation(); // Bỏ dòng này đi
-
+    
     const handleNavigate = (route: string) => {
         router.navigate(route as any);
         props.navigation.dispatch(DrawerActions.closeDrawer()); // Sử dụng props.navigation
@@ -165,7 +164,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử d�
                     <View style={styles.menuIconContainer}>
                         <Image source={require('@/assets/drawer/logout.png')} style={styles.menuIcon} />
                     </View>
-                    <Text style={styles.menuLabel}>Log Out</Text>
+                    <Text style={styles.menuLabel}>Đăng xuất</Text>
                 </Pressable>
             </View>
             <SafeAreaView edges={['bottom']} style={{ backgroundColor: APP_COLOR.ORANGE }} />

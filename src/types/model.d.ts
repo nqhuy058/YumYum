@@ -23,6 +23,9 @@ declare global {
     }
 
     interface IUserLogin {
+        avatar: any;
+        phone: any;
+        name: any;
         user: {
             email: string;
             _id: string;

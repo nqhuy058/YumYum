@@ -42,13 +42,13 @@ const OrderPage = () => {
             case 'Active':
                 return (
                     <View style={styles.emptyContainer}>
-                        <Text style={styles.emptyText}>No active orders found.</Text>
+                        <Text style={styles.emptyText}>Không có đơn hàng nào đang xử lí.</Text>
                     </View>
                 );
             case 'Cancelled':
                 return (
                     <View style={styles.emptyContainer}>
-                        <Text style={styles.emptyText}>No cancelled orders found.</Text>
+                        <Text style={styles.emptyText}>Không có đơn hàng nào bị hủy.</Text>
                     </View>
                 );
             case 'Completed':
@@ -70,11 +70,19 @@ const OrderPage = () => {
                                         source={{ uri: `${getUrlBaseBackend()}/images/restaurant/${item.restaurant?.image}` }}
                                         style={styles.completedImage}
                                     />
+
                                     <View style={styles.completedContent}>
-                                        <Text style={styles.completedTitle}>{item.restaurant.name}</Text>
-                                        <Text style={styles.completedText}>{item.restaurant.address}</Text>
-                                        <Text style={styles.completedText}>{currencyFormatter(item.totalPrice)} ({item.totalQuantity} món)</Text>
-                                        <Text style={[styles.completedText, { color: 'green', fontWeight: '500' }]}>Trạng thái: {item.status}</Text>
+                                        <View style={styles.row}>
+                                            <Text style={styles.completedTitle}>{item.restaurant.name}</Text>
+                                            <Text style={styles.completedTotal}>{currencyFormatter(item.totalPrice)}</Text>
+                                        </View>
+                                        <View style={styles.row}>
+                                            <Text style={styles.completedText}>{item.restaurant.address}</Text>
+                                            <Text style={styles.completedQuantity}>{item.totalQuantity} món</Text>
+                                        </View>
+                                        <Text style={[styles.completedText, { color: 'green', fontWeight: '500', marginTop: 'auto' }]}>
+                                            Trạng thái: {item.status}
+                                        </Text>
                                     </View>
                                 </View>
                                 <View style={styles.separator}></View>
@@ -89,7 +97,7 @@ const OrderPage = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <Stack.Screen options={{ headerShown: true, title: "My Orders", headerTitleAlign: "center", headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE }, headerTintColor: "black", headerTitleStyle: { fontWeight: 'bold' }, headerShadowVisible: false }} />
+            <Stack.Screen options={{ headerShown: true, title: "Đơn hàng của bạn", headerTitleAlign: "center", headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE }, headerTintColor: "#fff", headerTitleStyle: { fontWeight: 'bold', fontSize: 25}, headerShadowVisible: false }} />
             <View style={styles.background}>
                 <View style={styles.container}>
                     {/* Giao diện các Tab */}
@@ -109,16 +117,63 @@ const OrderPage = () => {
 }
 
 const styles = StyleSheet.create({
-    safeArea: { flex: 1, backgroundColor: APP_COLOR.YELLOW_BASE },
-    background: { flex: 1, backgroundColor: APP_COLOR.YELLOW_BASE },
-    container: { flex: 1, backgroundColor: '#f8f8f8', borderTopLeftRadius: 30, borderTopRightRadius: 30, paddingTop: 20 },
-    tabContainer: { flexDirection: 'row', justifyContent: 'center', gap: 15, paddingHorizontal: 20, marginBottom: 20 },
-    tab: { paddingVertical: 8, paddingHorizontal: 20, borderRadius: 20, backgroundColor: '#FFF1E8' },
-    activeTab: { backgroundColor: APP_COLOR.ORANGE },
-    tabText: { color: APP_COLOR.ORANGE, fontWeight: '600' },
-    activeTabText: { color: 'white' },
-    emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 50 },
-    emptyText: { fontSize: 16, color: 'gray' },
+    safeArea: {
+        flex: 1,
+        backgroundColor: APP_COLOR.YELLOW_BASE
+    },
+
+    background: {
+        flex: 1,
+        backgroundColor: APP_COLOR.YELLOW_BASE
+    },
+
+    container: {
+        flex: 1,
+        backgroundColor: '#f8f8f8',
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        paddingTop: 20
+    },
+
+    tabContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: 15,
+        paddingHorizontal: 20,
+        marginBottom: 20
+    },
+
+    tab: {
+        paddingVertical: 8,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        backgroundColor: '#FFF1E8'
+    },
+
+    activeTab: {
+        backgroundColor: APP_COLOR.ORANGE
+    },
+
+    tabText: {
+        color: APP_COLOR.ORANGE,
+        fontWeight: '600'
+    },
+
+    activeTabText: {
+        color: 'white'
+    },
+
+    emptyContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: 50
+    },
+
+    emptyText: {
+        fontSize: 16,
+        color: 'gray'
+    },
 
     completedCard: {
         padding: 10,
@@ -126,25 +181,53 @@ const styles = StyleSheet.create({
         gap: 10,
         backgroundColor: '#f8f8f8'
     },
+
     completedImage: {
         height: 108,
         width: 80,
         borderRadius: 20
     },
+
     completedContent: {
-        gap: 8,
-        flex: 1
+        flex: 1,
+        justifyContent: 'space-between', 
+        marginTop: 10,
+        gap: 10
     },
+
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+    },
+
     completedTitle: {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#333',
-        flexShrink: 1
+        flex: 1, 
+        marginRight: 8, 
     },
+
     completedText: {
         fontSize: 14,
-        color: '#666'
+        color: '#666',
+        flex: 1, 
+        marginRight: 8,
     },
+
+    completedTotal: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: APP_COLOR.ORANGE,
+    },
+
+    completedQuantity: {
+        fontSize: 14,
+        color: '#666',
+        textAlign: 'right', 
+    },
+
     separator: {
         height: 10,
         backgroundColor: "#eee"
