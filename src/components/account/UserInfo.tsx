@@ -2,6 +2,7 @@ import { useCurrentApp } from "@/context/app.context";
 import { updateUserAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
 import { UpdateUserSchema } from "@/utils/validate.schema";
+import EvilIcons from '@expo/vector-icons/EvilIcons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Formik } from "formik";
 import React from "react";
@@ -17,7 +18,6 @@ import {
 } from "react-native";
 import Toast from "react-native-root-toast";
 import ShareInput from "../input/share.input";
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 
 const UserInfo = () => {
     const { appState, setAppState } = useCurrentApp();
@@ -84,7 +84,7 @@ const UserInfo = () => {
                         source={{ uri: `${baseImage}/${appState.user.avatar}` }}
                     />
                     <Pressable style={styles.cameraButton}>
-                       <EvilIcons name="camera" size={24} color="#fff" />
+                        <EvilIcons name="camera" size={24} color="#fff" />
                     </Pressable>
                 </View>
 
@@ -108,13 +108,13 @@ const UserInfo = () => {
                                 error={errors.name}
                                 touched={touched.name}
                             />
-                            
+
                             <ShareInput
                                 title="Email"
                                 value={values.email}
                                 editable={false}
                             />
-                            
+
                             <ShareInput
                                 title="Số điện thoại"
                                 onChangeText={handleChange('phone')}
@@ -128,7 +128,6 @@ const UserInfo = () => {
                             <Pressable
                                 disabled={!(isValid && dirty)}
                                 onPress={handleSubmit as any}
-                                // ✅ THAY ĐỔI TẠI ĐÂY: Chuyển style thành một hàm để lấy trạng thái "pressed"
                                 style={({ pressed }) => [
                                     styles.updateButton,
                                     // Style cho trạng thái vô hiệu hóa
@@ -186,6 +185,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 20,
         marginBottom: 40,
+        width: '50%',
+        alignSelf: 'center',
     },
     updateButtonDisabled: {
         backgroundColor: '#FDBF60',

@@ -1,14 +1,13 @@
-import UserInfo from "@/components/account/UserInfo";
+import ContactUs from "@/components/contact/contact.us";
 import { APP_COLOR } from "@/utils/constant";
-import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const ProfilePage = () => {
+const ContactPage = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: APP_COLOR.YELLOW_BASE }}>
-            <UserInfo />
+            <ContactUs />
         </SafeAreaView>
-    );
-};
+    )
+}
 
-export default ProfilePage;
+export default ContactPage;

@@ -1,6 +1,7 @@
 import { currencyFormatter, getOrderHistoryAPI, getUrlBaseBackend } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
 import { Stack } from "expo-router";
+import React from "react";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -97,7 +98,6 @@ const OrderPage = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <Stack.Screen options={{ headerShown: true, title: "Đơn hàng của bạn", headerTitleAlign: "center", headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE }, headerTintColor: "#fff", headerTitleStyle: { fontWeight: 'bold', fontSize: 25}, headerShadowVisible: false }} />
             <View style={styles.background}>
                 <View style={styles.container}>
                     {/* Giao diện các Tab */}
@@ -234,4 +234,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default OrderPage;
+export default React.memo(OrderPage);

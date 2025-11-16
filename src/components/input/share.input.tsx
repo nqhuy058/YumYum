@@ -1,7 +1,7 @@
 import { APP_COLOR } from "@/utils/constant";
-import { useState } from "react";
-import { View, Text, StyleSheet, TextInput, KeyboardTypeOptions, Platform } from "react-native";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { useState } from "react";
+import { KeyboardTypeOptions, Platform, StyleSheet, Text, TextInput, View } from "react-native";
 
 const styles = StyleSheet.create({
     inputGroup: {
@@ -53,6 +53,8 @@ interface IProps {
     touched?: any;
     editable?: any;
     placeholder?: string;
+    multiline?: boolean;
+    numberOfLines?: number;
 }
 
 const ShareInput = (props: IProps) => {
@@ -60,7 +62,9 @@ const ShareInput = (props: IProps) => {
     const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
     const { title, keyboardType, secureTextEntry = false,
         value, setValue, onChangeText, onBlur,
-        error, touched, editable = true, placeholder = "" } = props;
+        error, touched, editable = true, placeholder = "",
+        multiline = false, numberOfLines
+    } = props;
 
     return (
         <View style={styles.inputGroup}>
@@ -83,9 +87,12 @@ const ShareInput = (props: IProps) => {
                     placeholderTextColor="#999"
                     style={[
                         styles.input,
-                        isFocused && styles.inputFocused
+                        isFocused && styles.inputFocused,
+                        multiline && { height: 100, textAlignVertical: 'top' }
                     ]}
                     secureTextEntry={secureTextEntry && !isShowPassword}
+                    multiline={multiline}
+                    numberOfLines={numberOfLines}
                 />
                 {secureTextEntry &&
                     <FontAwesome5

@@ -1,14 +1,15 @@
-import UserInfo from "@/components/account/UserInfo";
+import MyAddress from "@/components/address/MyAddress";
 import { APP_COLOR } from "@/utils/constant";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const ProfilePage = () => {
+const AddressPage = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: APP_COLOR.YELLOW_BASE }}>
-            <UserInfo />
+            <MyAddress />
         </SafeAreaView>
-    );
+    )
 };
 
-export default ProfilePage;
+export default AddressPage;
+

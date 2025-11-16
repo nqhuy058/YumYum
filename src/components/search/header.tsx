@@ -1,8 +1,9 @@
-import { View, StyleSheet, Pressable, Image, Text } from "react-native";
-import { APP_COLOR } from "@/utils/constant";
-import cartIcon from "@/assets/header/shop.header.png";
-import notificationIcon from "@/assets/header/nofication.header.png";
 import profileIcon from "@/assets/header/account.header.png";
+import notificationIcon from "@/assets/header/nofication.header.png";
+import cartIcon from "@/assets/header/shop.header.png";
+import { APP_COLOR } from "@/utils/constant";
+import { router } from "expo-router";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
@@ -57,11 +58,13 @@ interface IProps {
 }
 
 const Header = (props: IProps) => {
-    const { 
+    const {
         cartCount = 0,
         onCartPress,
         onNotificationPress,
-        onProfilePress
+        onProfilePress = () => {
+            router.navigate("/(drawer)/(tabs)/profile");
+        }
     } = props;
 
 

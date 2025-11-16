@@ -77,13 +77,13 @@ const styles = StyleSheet.create({
 
 const WelcomePage = () => {
     const handleLogIn = () => {
-        router.navigate("/(auth)/login");
+        router.replace("/(auth)/login");
 
         // Navigate to login screen
     }
 
     const handleSignUp = () => {
-        router.navigate("/(auth)/signup");
+        router.replace("/(auth)/signup");
         // Navigate to sign up screen
     }
 

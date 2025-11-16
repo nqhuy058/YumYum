@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 const menuItems = [
     { label: 'Đơn hàng của bạn', icon: require('@/assets/drawer/order.png'), route: '/(drawer)/(tabs)/order' },
     { label: 'Trang cá nhân', icon: require('@/assets/drawer/profile.png'), route: '/(drawer)/profile' },
-    { label: 'Đại chỉ giao hàng', icon: require('@/assets/drawer/adress.png'), route: '/(drawer)/address' },
+    { label: 'Địa chỉ giao hàng', icon: require('@/assets/drawer/adress.png'), route: '/(drawer)/address' },
     { label: 'Ví thanh toán', icon: require('@/assets/drawer/payment.png'), route: '/(drawer)/payment' },
     { label: 'Liên hệ', icon: require('@/assets/drawer/contact.png'), route: '/(drawer)/contact' },
     { label: 'Hỗ trợ và tư vấn', icon: require('@/assets/drawer/help.png'), route: '/(drawer)/(tabs)/help' },
@@ -96,7 +96,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử d�
         : process.env.EXPO_PUBLIC_IOS_API_URL;
 
     const baseImage = `${backend}/images/avatar`;
-    
+
     const handleNavigate = (route: string) => {
         router.navigate(route as any);
         props.navigation.dispatch(DrawerActions.closeDrawer()); // Sử dụng props.navigation
@@ -123,7 +123,13 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử d�
         <View style={styles.container}>
             <SafeAreaView edges={['top']} style={{ backgroundColor: APP_COLOR.ORANGE }} />
             {/* Profile Section */}
-            <View style={styles.profileContainer}>
+            <Pressable
+                onPress={() => handleNavigate('/(drawer)/profile')}
+                style={({ pressed }) => [
+                    styles.profileContainer,
+                    { opacity: pressed ? 0.8 : 1 }
+                ]}
+            >
                 <Image
                     source={{ uri: `${baseImage}/${appState?.user.avatar}` }}
                     style={styles.avatar}
@@ -132,7 +138,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử d�
                     <Text style={styles.name}>{appState?.user.name}</Text>
                     <Text style={styles.email}>{appState?.user.email}</Text>
                 </View>
-            </View>
+            </Pressable>
 
             <View style={styles.divider} />
 

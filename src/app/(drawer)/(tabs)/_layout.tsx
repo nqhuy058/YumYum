@@ -1,6 +1,6 @@
-import { Tabs } from "expo-router";
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { APP_COLOR } from "@/utils/constant";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { Tabs } from "expo-router";
 
 const TabLayout = () => {
     return (
@@ -12,7 +12,7 @@ const TabLayout = () => {
                 tabBarStyle: {
                     backgroundColor: APP_COLOR.ORANGE,
                     borderTopWidth: 0,
-                    height:55,
+                    height: 55,
                     paddingTop: 12,
                     paddingBottom: 25,
                     borderTopLeftRadius: 30,
@@ -59,6 +59,13 @@ const TabLayout = () => {
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="clipboard-list" size={size} color={color} />
                     ),
+                    headerShown: true,
+                    title: "Đơn hàng của bạn",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#fff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25 },
+                    headerShadowVisible: false
                 }}
             />
             <Tabs.Screen
@@ -74,6 +81,69 @@ const TabLayout = () => {
                 name="profile"
                 options={{
                     href: null,
+                    headerShown: true,
+                    title: "Thông tin cá nhân",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+            <Tabs.Screen
+                name="address"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Địa chỉ giao hàng",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+            <Tabs.Screen
+                name="new.address"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Thêm địa chỉ mới",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+             <Tabs.Screen
+                name="payment"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Phương thức thanh toán",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+            <Tabs.Screen
+                name="contact"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Liên hệ với chúng tôi",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
                 }}
             />
         </Tabs>
