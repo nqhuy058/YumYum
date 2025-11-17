@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
 
 const menuItems = [
     { label: 'Đơn hàng của bạn', icon: require('@/assets/drawer/order.png'), route: '/(drawer)/(tabs)/order' },
-    { label: 'Trang cá nhân', icon: require('@/assets/drawer/profile.png'), route: '/(drawer)/profile' },
-    { label: 'Địa chỉ giao hàng', icon: require('@/assets/drawer/adress.png'), route: '/(drawer)/address' },
-    { label: 'Ví thanh toán', icon: require('@/assets/drawer/payment.png'), route: '/(drawer)/payment' },
-    { label: 'Liên hệ', icon: require('@/assets/drawer/contact.png'), route: '/(drawer)/contact' },
+    { label: 'Trang cá nhân', icon: require('@/assets/drawer/profile.png'), route: '/(drawer)/(tabs)/profile' },
+    { label: 'Địa chỉ giao hàng', icon: require('@/assets/drawer/adress.png'), route: '/(drawer)/(tabs)/address' },
+    { label: 'Ví thanh toán', icon: require('@/assets/drawer/payment.png'), route: '/(drawer)/(tabs)/payment' },
+    { label: 'Liên hệ', icon: require('@/assets/drawer/contact.png'), route: '/(drawer)/(tabs)/contact' },
     { label: 'Hỗ trợ và tư vấn', icon: require('@/assets/drawer/help.png'), route: '/(drawer)/(tabs)/help' },
-    { label: 'Cài đặt', icon: require('@/assets/drawer/setting.png'), route: '/(drawer)/setting' },
+    { label: 'Cài đặt', icon: require('@/assets/drawer/setting.png'), route: '/(drawer)/(tabs)/setting' },
 ];
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => { // Sử dụng type DrawerContentComponentProps

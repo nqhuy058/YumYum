@@ -78,7 +78,7 @@ const TabLayout = () => {
             />
 
             <Tabs.Screen
-                name="profile"
+                name="(profile)/profile"
                 options={{
                     href: null,
                     headerShown: true,
@@ -92,7 +92,7 @@ const TabLayout = () => {
             />
 
             <Tabs.Screen
-                name="address"
+                name="(address)/address"
                 options={{
                     href: null,
                     headerShown: true,
@@ -106,7 +106,7 @@ const TabLayout = () => {
             />
 
             <Tabs.Screen
-                name="new.address"
+                name="(address)/new.address"
                 options={{
                     href: null,
                     headerShown: true,
@@ -119,8 +119,8 @@ const TabLayout = () => {
                 }}
             />
 
-             <Tabs.Screen
-                name="payment"
+            <Tabs.Screen
+                name="(payment)/payment"
                 options={{
                     href: null,
                     headerShown: true,
@@ -134,11 +134,53 @@ const TabLayout = () => {
             />
 
             <Tabs.Screen
-                name="contact"
+                name="(contact)/contact"
                 options={{
                     href: null,
                     headerShown: true,
                     title: "Liên hệ với chúng tôi",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+            <Tabs.Screen
+                name="(setting)/setting"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Cài đặt",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+            <Tabs.Screen
+                name="(setting)/notification.setting"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Cài đặt thông báo",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25 },
+                    headerShadowVisible: false,
+                }}
+            />
+
+            <Tabs.Screen
+                name="(setting)/password.setting"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Thay đổi mật khẩu",
                     headerTitleAlign: "center",
                     headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
                     headerTintColor: "#ffff",

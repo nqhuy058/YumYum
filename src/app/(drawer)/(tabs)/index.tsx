@@ -3,6 +3,7 @@ import CollectionHome from "@/components/home/collection.home";
 import MenuHome from "@/components/home/menu.home";
 import Header from "@/components/search/header";
 import SearchBar from "@/components/search/searchbar";
+import { useCurrentApp } from "@/context/app.context";
 import { APP_COLOR } from "@/utils/constant";
 import {
     ScrollView,
@@ -77,6 +78,7 @@ const collectionData = [
 ];
 
 const HomePage = () => {
+    const { appState } = useCurrentApp()
     return (
         <SafeAreaView style={styles.wrapper}>
             {/* Header with Icons */}
@@ -95,13 +97,13 @@ const HomePage = () => {
 
                 {/* Greeting Section */}
                 <View style={styles.greeting}>
-                    <Text style={styles.greetingTitle}>Xin chào bạn</Text>
+                    <Text style={styles.greetingTitle}>{`Xin chào ${appState?.user.name} `}</Text>
                     <Text style={styles.greetingSubtitle}>
                         Chúc bạn tìm được những món ăn yêu thích
                     </Text>
                 </View>
 
-                 <View style={styles.divider} />
+                <View style={styles.divider} />
 
 
                 {/* Menu Categories */}

@@ -30,17 +30,17 @@ export const UpdateUserSchema = Yup.object().shape({
 
 export const UpdateUserPasswordSchema = Yup.object().shape({
     currentPassword: Yup.string()
-        .min(6, 'currentPassword cần tối thiểu 6 ký tự')
-        .max(50, 'currentPassword tối đa 50 ký tự')
-        .required('currentPassword không được để trống'),
+        .min(6, 'mật khẩu hiện tại cần tối thiểu 6 ký tự')
+        .max(50, 'mật khẩu hiện tại tối đa 50 ký tự')
+        .required('mật khẩu hiện tại không được để trống'),
     newPassword: Yup.string()
-        .min(6, 'newPassword cần tối thiểu 6 ký tự')
-        .max(50, 'newPassword tối đa 50 ký tự')
-        .required('newPassword không được để trống'),
+        .min(6, 'mật khẩu mới cần tối thiểu 6 ký tự')
+        .max(50, 'mật khẩu mới tối đa 50 ký tự')
+        .required('mật khẩu mới không được để trống'),
 
     confirmNewPassword: Yup.string()
-        .required('confirmNewPassword không được để trống')
-        .oneOf([Yup.ref('newPassword')], 'Passwords must match')
+        .required('không được để trống')
+        .oneOf([Yup.ref('newPassword')], 'mật khẩu mới không đúng'),
 
 });
 

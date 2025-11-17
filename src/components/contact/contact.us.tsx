@@ -59,6 +59,44 @@ const ContactUs = () => {
         }
     };
 
+    // Hàm render nội dung cho tab Liên hệ
+    const renderContactContent = () => (
+        <ScrollView showsVerticalScrollIndicator={false}>
+            {CONTACT_DATA.map((item) => {
+                const isExpanded = item.id === expandedId;
+                return (
+                    <View key={item.id} style={styles.itemWrapper}>
+                        <Pressable style={styles.itemHeader} onPress={() => handlePressItem(item.id)}>
+                            {item.icon}
+                            <Text style={styles.itemTitle}>{item.title}</Text>
+                            <AntDesign
+                                name={isExpanded ? 'up' : 'down'}
+                                size={16}
+                                color={APP_COLOR.ORANGE}
+                            />
+                        </Pressable>
+                        {isExpanded && (
+                            <View style={styles.itemContent}>
+                                <Pressable onPress={() => handleLinkPress(item)}>
+                                    <Text style={styles.linkText}>{item.content}</Text>
+                                </Pressable>
+                            </View>
+                        )}
+                    </View>
+                );
+            })}
+        </ScrollView>
+    );
+
+    // Hàm render nội dung cho tab FAQ
+    const renderFaqContent = () => (
+        <View style={styles.faqContainer}>
+            <Text style={styles.faqText}>
+                Vui lòng chọn chức năng Hỗ Trợ Và Tư Vấn
+            </Text>
+        </View>
+    );
+
     return (
         <View style={styles.container}>
             <View style={styles.tabContainer}>
@@ -72,35 +110,12 @@ const ContactUs = () => {
                     style={[styles.tabButton, activeTab === 'Contact Us' && styles.activeTabButton]}
                     onPress={() => setActiveTab('Contact Us')}
                 >
-                    <Text style={[styles.tabButtonText, activeTab === 'Contact Us' && styles.activeTabText]}>Liên hệ với</Text>
+                    <Text style={[styles.tabButtonText, activeTab === 'Contact Us' && styles.activeTabText]}>Liên hệ</Text>
                 </Pressable>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false}>
-                {CONTACT_DATA.map((item) => {
-                    const isExpanded = item.id === expandedId;
-                    return (
-                        <View key={item.id} style={styles.itemWrapper}>
-                            <Pressable style={styles.itemHeader} onPress={() => handlePressItem(item.id)}>
-                                {item.icon}
-                                <Text style={styles.itemTitle}>{item.title}</Text>
-                                <AntDesign
-                                    name={isExpanded ? 'up' : 'down'}
-                                    size={16}
-                                    color={APP_COLOR.ORANGE}
-                                />
-                            </Pressable>
-                            {isExpanded && (
-                                <View style={styles.itemContent}>
-                                    <Pressable onPress={() => handleLinkPress(item)}>
-                                        <Text style={styles.linkText}>{item.content}</Text>
-                                    </Pressable>
-                                </View>
-                            )}
-                        </View>
-                    );
-                })}
-            </ScrollView>
+            {activeTab === 'Contact Us' ? renderContactContent() : renderFaqContent()}
+            
         </View>
     );
 };
@@ -156,12 +171,25 @@ const styles = StyleSheet.create({
     },
     itemContent: {
         paddingBottom: 20,
-        paddingLeft: 39,
+        paddingLeft: 50, // Căn lề với title
     },
     linkText: {
         color: '#888888',
         fontSize: 14,
         textDecorationLine: 'underline',
+    },
+    // ✅ STYLE MỚI CHO NỘI DUNG FAQ
+    faqContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+    },
+    faqText: {
+        fontSize: 16,
+        color: '#888888',
+        textAlign: 'center',
+        lineHeight: 24,
     },
 });
 
