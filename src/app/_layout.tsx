@@ -72,10 +72,28 @@ const RootLayout = () => {
                 options={{ headerShown: false }}
               />
 
+              <Stack.Screen
+                name="(user)/product/[id]"
+                options={{ headerShown: false }}
+              />
+
+              
+              <Stack.Screen
+                name="(user)/product/create.modal"
+                options={{ headerShown: false }}
+              />
+
+               <Stack.Screen
+                name="(user)/product/update.modal"
+                options={{ headerShown: false }}
+              />
+
+               <Stack.Screen
+                name="(user)/product/place.order"
+                options={{ headerShown: false }}
+              />
 
             </Stack>
-
-
           </ThemeProvider>
           {/* </SafeAreaView> */}
         </AppProvider>

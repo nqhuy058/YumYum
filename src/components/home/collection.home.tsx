@@ -178,7 +178,7 @@ const CollectionHome = (props: IProps) => {
                         <View style={[styles.headerContainer, styles.contentPadding]}>
                             <Text style={styles.title}>{name}</Text>
                             <Pressable
-                                onPress={() => router.navigate("/(user)/restaurants" as any)}
+                                onPress={() => router.navigate("/(drawer)/(tabs)/restaurants" as any)}
                                 style={styles.viewAllContainer}
                             >
                                 <Text style={styles.viewAllText}>Xem tất cả</Text>
@@ -209,12 +209,12 @@ const CollectionHome = (props: IProps) => {
                                 renderItem={({ item }) => {
                                     return (
                                         <Pressable
-                                            // onPress={() =>
-                                            //     router.navigate({
-                                            //         pathname: "/(user)/product/[id]",
-                                            //         params: { id: item._id },
-                                            //     })
-                                            // }
+                                            onPress={() =>
+                                                router.navigate({
+                                                    pathname: "/(user)/product/[id]",
+                                                    params: { id: item._id },
+                                                })
+                                            }
                                             style={styles.cardContainer}
                                         >
                                             <View style={styles.card}>

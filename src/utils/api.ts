@@ -98,12 +98,10 @@ export const likeRestaurantAPI = (restaurant: string, quantity: number) => {
     return axios.post<IBackendRes<IUserLogin>>(url, { restaurant, quantity });
 }
 
-
 export const getFavoriteRestaurantAPI = () => {
     const url = `/api/v1/likes?current=1&pageSize=10`;
     return axios.get<IBackendRes<IRestaurants[]>>(url);
 }
-
 
 export const currencyFormatter = (value: any) => {
     const options = {

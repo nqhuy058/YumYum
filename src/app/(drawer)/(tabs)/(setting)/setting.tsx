@@ -23,19 +23,19 @@ interface SettingItemType {
 const SETTINGS_DATA: SettingItemType[] = [
     {
         id: '1',
-        title: 'Notification Setting',
+        title: 'Cài đặt Thông báo',
         icon: <Ionicons name="notifications-outline" size={40} color={APP_COLOR.ORANGE} />,
         route: '/notification.setting',
     },
     {
         id: '2',
-        title: 'Password Setting',
+        title: 'Cài đặt Mật khẩu',
         icon: <MaterialCommunityIcons name="account-key-outline" size={40} color={APP_COLOR.ORANGE} />,
         route: '/password.setting',
     },
     {
         id: '3',
-        title: 'Delete Account',
+        title: 'Xóa tài khoản',
         icon: <MaterialCommunityIcons name="account-arrow-left-outline" size={40} color={APP_COLOR.ORANGE} />,
         route: '/',
     },

@@ -51,6 +51,13 @@ const TabLayout = () => {
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="heart" size={size} color={color} solid />
                     ),
+                    headerShown: true,
+                    title: "Cửa hàng yêu thích",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
                 }}
             />
             <Tabs.Screen
@@ -76,6 +83,7 @@ const TabLayout = () => {
                     ),
                 }}
             />
+            
 
             <Tabs.Screen
                 name="(profile)/profile"
@@ -181,6 +189,20 @@ const TabLayout = () => {
                     href: null,
                     headerShown: true,
                     title: "Thay đổi mật khẩu",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
+                }}
+            />
+
+             <Tabs.Screen
+                name="restaurants"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Tất cả các cửa hàng",
                     headerTitleAlign: "center",
                     headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
                     headerTintColor: "#ffff",
