@@ -1,10 +1,9 @@
 import { View, Text } from "react-native"
+import RestaurantsPage from "./restaurants";
 
 const MenuPage = () => {
     return (
-        <View>
-            <Text>Menu Page</Text>
-        </View>
+       <RestaurantsPage/>
     )
 }
 export default  MenuPage;

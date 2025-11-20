@@ -16,7 +16,11 @@ import { SafeAreaView } from "react-native-safe-area-context"
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: APP_COLOR.YELLOW_BASE,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        backgroundColor: 'white', 
+        overflow: 'hidden',
+        paddingTop: 30
     },
     title: {
         fontSize: 25,
@@ -119,20 +123,12 @@ const LoginPage = () => {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        // <SafeAreaView style={{ flex: 1,  }}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
-                    {/* Title */}
-                    <View style={{ alignItems: "center" }}>
-                        <Text style={styles.title}>Đăng nhập</Text>
-                    </View>
-
                     <ScrollView
                         showsVerticalScrollIndicator={false}
                         style={{
-                            backgroundColor: "white",
-                            borderTopLeftRadius: 30,
-                            borderTopRightRadius: 30,
                             flex: 1,
                             paddingTop: 30
                         }}
@@ -225,7 +221,7 @@ const LoginPage = () => {
                     </ScrollView>
                 </View>
             </TouchableWithoutFeedback>
-        </SafeAreaView>
+        // </SafeAreaView>
     )
 }
 

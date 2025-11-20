@@ -15,12 +15,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: APP_COLOR.YELLOW_BASE,
     },
-    title: {
-        fontSize: 25,
-        fontWeight: "600",
-        marginVertical: 30,
-        color: '#fff'
-    },
     forgotContainer: {
         marginVertical: 10,
     },
@@ -119,11 +113,6 @@ const SignUpPage = () => {
         <SafeAreaView style={{ flex: 1 }}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
-                    {/* Title */}
-                    <View style={{ alignItems: "center" }}>
-                        <Text style={styles.title}>Đăng kí tài khoản mới</Text>
-                    </View>
-
                     <ScrollView
                         showsVerticalScrollIndicator={false}
                         style={{
@@ -131,7 +120,7 @@ const SignUpPage = () => {
                             borderTopLeftRadius: 30,
                             borderTopRightRadius: 30,
                             flex: 1,
-                            paddingTop: 30
+                            paddingTop: 50
                         }}
                         scrollEnabled={true}
                         contentContainerStyle={{ flexGrow: 1 }}

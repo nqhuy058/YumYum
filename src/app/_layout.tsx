@@ -48,13 +48,31 @@ const RootLayout = () => {
                 options={{
                   // headerTitle: "Log In",
                   // headerBackTitle: " Back",
-                  headerShown: false
+                  headerShown: true,
+                  title: "Đăng nhập",
+                  headerTitleAlign: "center",
+                  headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                  contentStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                  headerTintColor: "#ffff",
+                  headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                  headerShadowVisible: false,
+                  headerBackVisible: false,
                 }}
               />
 
               <Stack.Screen
                 name="(auth)/signup"
-                options={{ headerShown: false }}
+                options={{
+                  headerShown: true,
+                  title: "Đăng kí tài khoản",
+                  headerTitleAlign: "center",
+                  headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                  contentStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                  headerTintColor: "#ffff",
+                  headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                  headerShadowVisible: false,
+                  headerBackVisible: false,
+                }}
               />
 
               <Stack.Screen
@@ -64,6 +82,11 @@ const RootLayout = () => {
 
               <Stack.Screen
                 name="(auth)/request.password"
+                options={{ headerShown: false }}
+              />
+
+              <Stack.Screen
+                name="(auth)/forgot.password"
                 options={{ headerShown: false }}
               />
 

@@ -43,6 +43,13 @@ const TabLayout = () => {
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="utensils" size={size} color={color} />
                     ),
+                    headerShown: true,
+                    title: "Menu",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
                 }}
             />
             <Tabs.Screen
@@ -81,6 +88,27 @@ const TabLayout = () => {
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="headset" size={size} color={color} />
                     ),
+                     headerShown: true,
+                    title: "Hỗ Trợ",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#fff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25 },
+                    headerShadowVisible: false
+                }}
+            />
+
+            <Tabs.Screen
+                name="(help)/support"
+                options={{
+                    href: null,
+                    headerShown: true,
+                    title: "Support",
+                    headerTitleAlign: "center",
+                    headerStyle: { backgroundColor: APP_COLOR.YELLOW_BASE },
+                    headerTintColor: "#ffff",
+                    headerTitleStyle: { fontWeight: 'bold', fontSize: 25, },
+                    headerShadowVisible: false,
                 }}
             />
             
