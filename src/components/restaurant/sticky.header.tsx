@@ -67,7 +67,6 @@ const StickyHeader = (props: IProps) => {
         }
     }
 
-    // nút Back và like/dislike gộp vào component này, vì nó có zIndex cao nhất => có thể pressabled
     return (
         <>
             <View style={{
@@ -81,7 +80,7 @@ const StickyHeader = (props: IProps) => {
 
                 <View style={{
                     flexDirection: "row",
-                    gap: 5,
+                    gap: 10,
                     alignItems: "center"
                 }}>
                     <Pressable
@@ -90,13 +89,7 @@ const StickyHeader = (props: IProps) => {
                         }])}
                         onPress={() => router.back()}>
                         <Animated.View
-                            style={[animatedBackgroundStyle, {
-                                height: 30,
-                                width: 30,
-                                borderRadius: 30 / 2,
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }]}
+                            style={[animatedBackgroundStyle, styles.backButtonCircle]}
                         >
                             <AnimatedMaterialIcons
                                 name="arrow-back" size={24}
@@ -104,16 +97,17 @@ const StickyHeader = (props: IProps) => {
                             />
                         </Animated.View>
                     </Pressable>
+
+                    {/*Thanh tìm kiếm */}
                     <Animated.View style={[{ flex: 1 }, animatedStickyHeaderStyle]}>
-                        <TextInput
-                            placeholder={"Tìm món ăn tại cửa hàng..."}
-                            style={{
-                                borderWidth: 1, borderColor: APP_COLOR.GREY, width: "100%",
-                                borderRadius: 3,
-                                paddingHorizontal: 10,
-                                paddingVertical: Platform.OS === "android" ? 0 : 10,
-                            }}
-                        />
+                        <View style={styles.searchContainer}>
+                            <MaterialIcons name="search" size={22} color="#888" style={styles.searchIcon} />
+                            <TextInput
+                                placeholder={"Tìm món ăn tại cửa hàng..."}
+                                placeholderTextColor="#888"
+                                style={styles.searchInput}
+                            />
+                        </View>
                     </Animated.View>
                 </View>
             </View>
@@ -148,5 +142,32 @@ const StickyHeader = (props: IProps) => {
         </>
     )
 }
+
+const styles = StyleSheet.create({
+    backButtonCircle: {
+        height: 40,
+        width: 40,
+        borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    searchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#f0f0f0', 
+        borderRadius: 10,        
+        paddingHorizontal: 12,
+        height: 40,
+    },
+    searchIcon: {
+        marginRight: 8,
+    },
+    searchInput: {
+        flex: 1,
+        fontSize: 15,
+        color: '#333',
+    },
+});
+
 
 export default StickyHeader;

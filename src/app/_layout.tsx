@@ -101,6 +101,11 @@ const RootLayout = () => {
                 options={{ headerShown: false }}
               />
 
+              <Stack.Screen
+                name="(auth)/search"
+                options={{ headerShown: false }}
+              />
+
             </Stack>
           </ThemeProvider>
           {/* </SafeAreaView> */}

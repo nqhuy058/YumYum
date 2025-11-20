@@ -1,6 +1,7 @@
-import { View, StyleSheet, TextInput, Pressable } from "react-native";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { APP_COLOR } from "@/utils/constant";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { router } from "expo-router";
+import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -46,12 +47,17 @@ const SearchBar = (props: IProps) => {
         <View style={styles.container}>
             <View style={styles.searchBox}>
                 <FontAwesome5 name="search" size={14} color="#999" />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Tìm kiếm món ăn và cửa hàng"
-                    placeholderTextColor="#CCC"
-                    onChangeText={onSearch}
-                />
+                 <Pressable
+                    onPress={() => router.navigate("/(auth)/search")}
+                    style={({ pressed }) => [
+                        styles.input,
+                        { opacity: pressed ? 0.7 : 1 } 
+                    ]}
+                >
+                    <Text style={{ color: "#CCC" }}>
+                        Tìm kiếm món ăn và cửa hàng
+                    </Text>
+                </Pressable>
             </View>
             <Pressable
                 style={({ pressed }) => [
