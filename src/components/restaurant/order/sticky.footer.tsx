@@ -1,103 +1,127 @@
-import { Pressable, Text, View } from "react-native"
+import { Pressable, StyleSheet, Text, View } from "react-native"
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { APP_COLOR } from "@/utils/constant";
 import { currencyFormatter } from "@/utils/api";
 import { useCurrentApp } from "@/context/app.context";
 import { router } from "expo-router";
+import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
 
 interface IProps {
     restaurant: IRestaurants | null;
 }
 
 const StickyFooter = (props: IProps) => {
-    const { cart, setCart } = useCurrentApp();
+    const { cart } = useCurrentApp();
     const { restaurant } = props;
 
-    const getSum = () => {
-        if (restaurant && cart[restaurant._id]) {
-            return cart[restaurant._id].sum;
-        }
-        return 0;
+    const restaurantCart = restaurant ? cart[restaurant._id] : null;
+
+    if (!restaurantCart || restaurantCart.quantity === 0) {
+        return null;
     }
+
     return (
-        <>
-            {getSum() === 0
-                ?
-                <></>
-                :
-                <View style={{
-                    width: "100%",
-                    backgroundColor: "white",
-                    zIndex: 11,
-                    position: "absolute",
-                    bottom: 0,
-                    flexDirection: "row"
-                }}>
-                    <View style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        flex: 1,
-                        borderTopWidth: 1,
-                        borderTopColor: APP_COLOR.GREY,
-                    }}>
-                        <View style={{
-                            paddingVertical: 10,
-                            paddingHorizontal: 30
-                        }}>
-                            <View style={{
-                                position: "absolute",
-                                left: 60,
-                                top: 5,
-                                width: 16,
-                                height: 16,
-                                borderRadius: 16 / 2,
-                                justifyContent: "center",
-                                alignItems: "center",
-                                backgroundColor: APP_COLOR.ORANGE
-                            }}>
-                                <Text style={{ color: "white", fontSize: 9, }}>
-                                    {restaurant && cart && cart[restaurant?._id] &&
-                                        cart[restaurant?._id]["quantity"] &&
-                                        <>
-                                            <Text>
-                                                {cart[restaurant?._id]["quantity"]}
-                                            </Text>
-                                        </>
-                                    }
-                                </Text>
-                            </View>
-                            <Pressable onPress={() => alert("cart")}>
-                                <FontAwesome5 name="shopping-basket"
-                                    size={30} color={APP_COLOR.ORANGE}
-                                />
-                            </Pressable>
-                        </View>
-                        <View style={{ paddingRight: 10 }}>
-                            <Text style={{
-                                color: APP_COLOR.ORANGE,
-                                fontSize: 18
-                            }}>
-                                {currencyFormatter(getSum())}
-                            </Text>
-                        </View>
-                    </View>
-                    <Pressable style={{
-                        paddingHorizontal: 30,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: APP_COLOR.ORANGE
-                    }}
-                        onPress={() => router.navigate("/(user)/product/place.order")}
-                    >
-                        <Text style={{ color: "white" }}>
-                            Giao hàng
+     
+        <Animated.View
+            entering={SlideInDown.delay(100)}
+            exiting={SlideOutDown}
+            style={styles.container}
+        >
+        
+            <View style={styles.cartInfo}>
+                <View style={styles.basketContainer}>
+                    <FontAwesome5 name="shopping-basket" size={28} color={APP_COLOR.ORANGE} />
+                    <View style={styles.badge}>
+                        <Text style={styles.badgeText}>
+                            {restaurantCart.quantity}
                         </Text>
-                    </Pressable>
+                    </View>
                 </View>
-            }
-        </>
+                <Text style={styles.priceText}>
+                    {currencyFormatter(restaurantCart.sum)}
+                </Text>
+            </View>
+
+            <Pressable
+                style={styles.checkoutButton}
+                onPress={() => router.navigate("/(user)/product/place.order")}
+            >
+                <Text style={styles.checkoutButtonText}>
+                    Giao hàng
+                </Text>
+            </Pressable>
+        </Animated.View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        
+        zIndex: 10,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderTopWidth: 1,
+        borderTopColor: '#e0e0e0',
+        
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: -2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    cartInfo: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 15,
+    },
+    basketContainer: {
+       
+    },
+    badge: {
+        position: 'absolute',
+        top: -5,
+        right: -8,
+        backgroundColor: APP_COLOR.ORANGE,
+        borderRadius: 10,
+        width: 20,
+        height: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'white',
+    },
+    badgeText: {
+        color: 'white',
+        fontSize: 10,
+        fontWeight: 'bold',
+    },
+    priceText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+    },
+    checkoutButton: {
+        backgroundColor: APP_COLOR.ORANGE,
+        paddingHorizontal: 30,
+        paddingVertical: 12,
+        borderRadius: 10,
+    },
+    checkoutButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+});
 
 export default StickyFooter;
