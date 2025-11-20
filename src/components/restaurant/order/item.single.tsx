@@ -20,7 +20,7 @@ const ItemSingle = (props: IProps) => {
         }}>
             <View>
                 <Image
-                    style={{ height: 100, width: 100 }}
+                    style={{ height: 100, width: 100, borderRadius: 15 }}
                     source={{ uri: `${getUrlBaseBackend()}/images/menu-item/${menuItem?.image}` }} />
             </View>
             <View style={{ flex: 1, gap: 10 }}>

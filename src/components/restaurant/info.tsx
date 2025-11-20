@@ -41,9 +41,6 @@ const Info = (props: IProps) => {
                     <Text>5.0 (999+ Bình Luận) </Text>
                 </View>
 
-                {/* nút like/dislike chuyển qua component sticky.header, do zIndex component nào bé hơn => không pressable được */}
-                {/* <MaterialIcons name="favorite" size={20} color="black" />
-                <MaterialIcons onPress={() => alert("like")} name="favorite-outline" size={20} color={APP_COLOR.GREY} /> */}
             </View>
             <View style={{ height: 10, backgroundColor: "#e9e9e9" }}></View>
 
