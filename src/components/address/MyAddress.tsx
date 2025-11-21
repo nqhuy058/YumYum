@@ -83,7 +83,7 @@ const MyAddress = () => {
             <View style={styles.buttonContainer}>
                 <ShareButton
                     tittle="Thêm địa chỉ mới"
-                    onPress={() => router.navigate('/(drawer)/(tabs)/new.address')}
+                    onPress={() => router.navigate('/(drawer)/(tabs)/(address)/new.address')}
                     btnStyle={styles.addButton}
                     textStyle={styles.addButtonText}
                 />

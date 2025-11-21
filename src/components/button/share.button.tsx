@@ -22,12 +22,13 @@ interface IProps {
     btnStyle?: StyleProp<ViewStyle>;
     icons?: ReactNode;
     loading?: boolean;
+
 }
 
 const ShareButton = (props: IProps) => {
     const { tittle, onPress, textStyle,
         pressStyle, btnStyle,
-        icons, loading = false
+        icons, loading = false, 
     } = props;
     
     return (

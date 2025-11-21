@@ -32,7 +32,7 @@ const HelpPage = () => {
                         <HelpItem
                             title="Liên hệ với nhân viên để được hỗ trợ"
                             subtitle="Support"
-                            onPress={() => router.navigate("(help)/support")}
+                            onPress={() => router.navigate("/(drawer)/(tabs)/(help)/support")}
                         />
                         <HelpItem
                             title="Trung tâm hỗ trợ"
