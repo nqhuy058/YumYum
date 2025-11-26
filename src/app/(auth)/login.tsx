@@ -142,7 +142,6 @@ const LoginPage = () => {
                         >
                             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
                                 <View style={{ gap: 15, marginHorizontal: 20, flex: 1 }}>
-                                    {/* Email Input */}
                                     <ShareInput
                                         title="Email"
                                         keyboardType="email-address"

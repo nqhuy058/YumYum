@@ -1,50 +1,88 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+YumYum là một ứng dụng đặt đồ ăn hoàn chỉnh được xây dựng bằng React Native và Expo. Dự án này mô phỏng quy trình thực tế của một ứng dụng thương mại điện tử, từ việc xác thực người dùng, tìm kiếm nhà hàng, quản lý giỏ hàng phức tạp (với nhiều tùy chọn topping/size) đến theo dõi lịch sử đơn hàng và tích hợp bản đồ.
 
-## Get started
+🚀 Tech Stack
+Dự án sử dụng các công nghệ và thư viện hiện đại nhất trong hệ sinh thái React Native:
 
-1. Install dependencies
+Core Framework: React Native, Expo SDK 54
 
-   ```bash
-   npm install
-   ```
+Language: TypeScript
 
-2. Start the app
+Navigation: Expo Router (File-based routing)
 
-   ```bash
-   npx expo start
-   ```
+State Management: React Context API (Global state cho User & Cart)
 
-In the output, you'll find options to open the app in a
+Networking: Axios (với Interceptors xử lý token tự động)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+UI & Animations:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+React Native Reanimated (Hiệu ứng Sticky Header, Parallax)
 
-## Get a fresh project
+React Native Gesture Handler
 
-When you're ready, run:
+React Content Loader (Skeleton loading)
 
-```bash
-npm run reset-project
-```
+React Native SVG & Vector Icons
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Forms & Validation: Formik, Yup
 
-## Learn more
+Map Integration: React Native WebView (Tích hợp Leaflet/OpenStreetMap)
 
-To learn more about developing your project with Expo, look at the following resources:
+Storage: AsyncStorage
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+🔥 Key Features (Tính năng chính)
+1. Authentication & Security (Xác thực)
+Đăng nhập/Đăng ký: Quy trình hoàn chỉnh với validation chặt chẽ.
 
-## Join the community
+Xác thực OTP: Màn hình nhập OTP gửi về email.
 
-Join our community of developers creating universal apps.
+Quên mật khẩu: Luồng khôi phục mật khẩu qua email.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Auto-Login: Tự động đăng nhập dựa trên Token lưu trong AsyncStorage.
+
+2. Home & Discovery (Khám phá)
+Banner Carousel: Banner quảng cáo tự động chạy.
+
+Bộ sưu tập (Collections): Danh sách nhà hàng theo tiêu chí (Best Seller, Top Rating).
+
+Tìm kiếm thông minh: Tích hợp Debounce để tối ưu hóa API request khi tìm kiếm nhà hàng/món ăn.
+
+3. Restaurant Detail & Ordering (Đặt món)
+UI/UX nâng cao: Hiệu ứng Parallax Header và Sticky Search Bar khi cuộn danh sách món ăn.
+
+Sticky Menu: Menu danh mục món ăn trượt theo nội dung (SectionList + Animated).
+
+Giỏ hàng phức tạp: Xử lý logic thêm món với nhiều tùy chọn (Toppings, Size, Ghi chú). Tính toán tổng tiền real-time.
+
+4. Checkout & User Profile
+Xác nhận đơn hàng: Xem lại thông tin giao hàng, phương thức thanh toán.
+
+Bản đồ: Chọn vị trí giao hàng trực quan trên bản đồ (sử dụng WebView để hiển thị OpenStreetMap).
+
+Lịch sử đơn hàng: Theo dõi trạng thái đơn hàng (Active, Completed, Cancelled).
+
+Quản lý tài khoản: Cập nhật thông tin cá nhân, đổi mật khẩu, cài đặt thông báo.
+
+
+🛠 Installation & Setup
+Clone the repository:
+git clone https://github.com/nqhuy058/YumYum.git
+cd yumyum
+
+Install dependencies:
+npm install
+
+Environment Setup: Tạo file .env ở thư mục gốc và cấu hình địa chỉ IP Backend của bạn (hoặc sử dụng localhost nếu chạy giả lập):
+EXPO_PUBLIC_API_URL=http://YOUR_IP_ADDRESS:8080
+EXPO_PUBLIC_ANDROID_API_URL=http://10.0.2.2:8080
+EXPO_PUBLIC_IOS_API_URL=http://YOUR_IP_ADDRESS:8080
+
+Run the app:
+npx expo start
+
+📬 Contact
+Author: Nguyễn Quang Huy
+
+Email: nqhuy058@gmail.com
+
+GitHub: nqhuy058
